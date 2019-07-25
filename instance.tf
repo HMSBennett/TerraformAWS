@@ -18,10 +18,13 @@ resource "aws_instance" "default" {
 			"cd DockerInstall",
 			"./install.sh",
 			"./docCompInstall.sh",
+			"cd ..",
 			"git clone https://github.com/HMSBennett/DockerMEAN",
 			"cd DockerMEAN",
 			"cd OneVM",
-			"docker-compose up -d"
+			"sudo systemctl enable docker",
+			"sudo systemctl start docker",
+			"sudo docker-compose up -d"
 		]
 	}
 }
