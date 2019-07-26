@@ -28,9 +28,9 @@ resource "aws_instance" "default" {
 resource "aws_instance" "api" {
     ami = "ami-0c30afcb7ab02233d"
     instance_type = "t2.micro"
-    subnet_id = "${aws_subnet.default.id}"
+    subnet_id = "${aws_subnet.api.id}"
     vpc_security_group_ids = ["${aws_security_group.default.id}"]
-	private_ip = "10.0.0.22"
+	private_ip = "10.0.10.22"
     associate_public_ip_address = true
     key_name = "default-key-pair"
     provisioner "remote-exec" {
@@ -54,9 +54,9 @@ resource "aws_instance" "api" {
 resource "aws_instance" "db" {
     ami = "ami-0c30afcb7ab02233d"
     instance_type = "t2.micro"
-    subnet_id = "${aws_subnet.default.id}"
+    subnet_id = "${aws_subnet.db.id}"
     vpc_security_group_ids = ["${aws_security_group.default.id}"]
-	private_ip = "10.0.0.23"
+	private_ip = "10.0.20.23"
     associate_public_ip_address = true
     key_name = "default-key-pair"
     provisioner "remote-exec" {
